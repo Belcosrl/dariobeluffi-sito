@@ -1,0 +1,278 @@
+/* Dario Beluffi — sito personale
+   Identità: carta, filetti, etichette in mono, numeri tabulari. Un documento tecnico, non una brochure.
+   Contrasti verificati il 10-11-2026: tutti i testi >= 4,5:1, i numeri grandi >= 3:1. */
+
+:root{
+  --paper:#f5f5f2; --card:#fff; --ink:#15171a; --ink2:#55595d; --rule:#d8d8d2;
+  --accent:#1f5543; --accent-soft:#e7efea; --mark:#7d5f0e;
+  --warn-bg:#fdf4e3; --warn-ink:#5c4410; --warn-rule:#dcc48a;
+  --on-accent:#fff;
+  --disp:Archivo,"Helvetica Neue",Arial,sans-serif;
+  --body:Spectral,Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#131614; --card:#1b1f1d; --ink:#eceeec; --ink2:#a2a8a4; --rule:#2d322f;
+  --accent:#74c3a4; --accent-soft:#1c2a25; --mark:#d7b45f;
+  --warn-bg:#241e10; --warn-ink:#e4d5ab; --warn-rule:#4b4027;
+  --on-accent:#0d1210;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper:#131614; --card:#1b1f1d; --ink:#eceeec; --ink2:#a2a8a4; --rule:#2d322f;
+  --accent:#74c3a4; --accent-soft:#1c2a25; --mark:#d7b45f;
+  --warn-bg:#241e10; --warn-ink:#e4d5ab; --warn-rule:#4b4027;
+  --on-accent:#0d1210;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:1.02rem;line-height:1.62;overflow-wrap:break-word}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.col{max-width:720px;margin:0 auto}
+
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:8px;top:8px;z-index:40;background:var(--accent);color:var(--on-accent);padding:9px 14px;font-family:var(--disp)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* barra di stato — DA CANCELLARE PRIMA DI ANDARE ONLINE */
+.draft{background:var(--accent);color:var(--on-accent);font-family:var(--mono);
+  font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;padding-block:11px}
+.draft .col{display:flex;gap:8px 18px;justify-content:space-between;flex-wrap:wrap}
+
+nav{background:var(--paper);border-bottom:1px solid var(--rule);padding-block:11px}
+nav .col{display:flex;align-items:baseline;gap:8px 18px;flex-wrap:wrap}
+.brand{font-family:var(--disp);font-weight:700;font-size:.95rem;letter-spacing:-.01em;
+  margin-right:auto;text-decoration:none;color:var(--ink)}
+.brand small{display:block;font-family:var(--mono);font-weight:400;font-size:.72rem;
+  letter-spacing:.07em;text-transform:uppercase;color:var(--ink2);margin-top:2px}
+nav a.lk{font-family:var(--mono);font-size:.74rem;letter-spacing:.02em;color:var(--ink2);
+  text-decoration:none;padding:3px 0;border-bottom:2px solid transparent;white-space:nowrap}
+nav a.lk:hover{color:var(--ink)}
+nav a.lk[aria-current="page"]{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
+
+main{padding-block:38px 68px}
+h1{font-family:var(--disp);font-weight:700;font-size:clamp(1.72rem,5.4vw,2.8rem);line-height:1.08;
+  letter-spacing:-.022em;margin:0 0 .42em;text-wrap:balance}
+h2{font-family:var(--disp);font-weight:600;font-size:clamp(1.16rem,3.2vw,1.4rem);line-height:1.2;
+  letter-spacing:-.012em;margin:1.9em 0 .35em;text-wrap:balance}
+h2:first-of-type{margin-top:0}
+h3{font-family:var(--disp);font-weight:600;font-size:1rem;margin:1.5em 0 .3em}
+.lede{font-size:1.14rem;color:var(--ink2);margin:0 0 1.9rem;max-width:56ch}
+p{margin:0 0 1.05em;max-width:66ch}
+.lbl{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink2);margin:0 0 .35em;display:block}
+a{color:var(--accent)}
+strong{font-weight:600}
+hr{border:0;border-top:1px solid var(--rule);margin:38px 0}
+ul.plain{padding-left:1.2em;margin:0 0 1.2em;max-width:66ch}
+ul.plain li{margin-bottom:.35em}
+
+/* le tre prove — un cartiglio */
+.proofs{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));
+  border:1px solid var(--rule);background:var(--card);margin:0 0 30px}
+.proof{padding:18px 16px;border-right:1px solid var(--rule);min-width:0}
+.proof:last-child{border-right:0}
+.pnum{font-family:var(--disp);font-weight:700;font-size:1.95rem;line-height:1;letter-spacing:-.02em;
+  color:var(--mark);font-variant-numeric:tabular-nums;display:block;margin-bottom:7px}
+.proof p{font-size:.87rem;color:var(--ink2);margin:0;max-width:34ch;line-height:1.45}
+@media (max-width:559px){.proof{border-right:0;border-bottom:1px solid var(--rule)}.proof:last-child{border-bottom:0}}
+
+.cta{display:inline-block;font-family:var(--disp);font-weight:600;font-size:.94rem;
+  background:var(--accent);color:var(--on-accent);padding:13px 26px;text-decoration:none;border:1px solid var(--accent)}
+.cta:hover{background:var(--paper);color:var(--accent)}
+
+/* servizi */
+.svc{border-top:1px solid var(--rule);padding:26px 0}
+.svc-h{display:flex;gap:13px;align-items:baseline;margin-bottom:.5em}
+.svc-n{font-family:var(--disp);font-size:clamp(1.16rem,3.2vw,1.4rem);line-height:1.2;
+  color:var(--accent);font-weight:700;flex:none;font-variant-numeric:tabular-nums}
+.svc-h h2{margin:0}
+.block{margin:0 0 .95em}
+.block p{margin:0}
+.block ul{margin:.1em 0 0;padding-left:1.15em;max-width:66ch}
+.block li{margin-bottom:.22em}
+.price{font-family:var(--disp);font-weight:700;font-size:1.05rem;background:var(--accent-soft);
+  color:var(--ink);display:inline-block;padding:7px 13px;border-left:3px solid var(--accent);
+  font-variant-numeric:tabular-nums;margin:0}
+
+.wide{overflow-x:auto;margin:0 0 1.5em}
+table{border-collapse:collapse;width:100%;font-size:.9rem;min-width:300px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink2);font-weight:500}
+td.num{text-align:right;font-family:var(--disp);font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+th.num{text-align:right}
+
+.stage{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--accent);
+  padding:18px;margin:0 0 14px}
+.stage .lbl{color:var(--accent)}
+.stage p:last-child,.stage ul:last-child{margin-bottom:0}
+ol.steps{counter-reset:s;list-style:none;padding:0;margin:0 0 1.3em;max-width:66ch}
+ol.steps li{counter-increment:s;position:relative;padding-left:40px;margin-bottom:.85em}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:1px;font-family:var(--mono);
+  font-weight:600;font-size:.78rem;color:var(--accent);border:1px solid var(--accent);
+  width:25px;height:25px;display:grid;place-items:center}
+blockquote{margin:0 0 1.3em;padding:16px 20px;background:var(--accent-soft);
+  border-left:3px solid var(--accent);font-size:1.06rem;font-style:italic;max-width:66ch}
+blockquote p:last-child{margin-bottom:0}
+
+/* il blocco «cosa consegno» — voci a filetto */
+dl.deliv{margin:0 0 1.4em;max-width:68ch}
+dl.deliv dt{font-family:var(--disp);font-weight:600;font-size:1rem;margin-top:1.35em;
+  padding-top:.9em;border-top:1px solid var(--rule)}
+dl.deliv dt:first-child{margin-top:0;padding-top:0;border-top:0}
+dl.deliv dd{margin:.3em 0 0}
+dl.deliv dd p{margin:0}
+
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule);margin:0 0 1.5em}
+.contact div{background:var(--card);padding:15px 17px}
+.contact a,.contact b{font-family:var(--mono);font-size:.9rem;font-weight:500;word-break:break-word}
+
+footer{border-top:1px solid var(--rule);padding-block:22px 34px;font-family:var(--mono);
+  font-size:.76rem;color:var(--ink2);letter-spacing:.03em}
+footer a{color:var(--ink2)}
+
+/* telefono: marchio su una riga sua, link sulla seconda */
+@media (max-width:559px){
+  .brand{margin-right:0;width:100%;margin-bottom:4px}
+  nav .col{gap:6px 16px}
+}
+
+/* segnaposto di lavorazione — spariscono quando il dato arriva */
+.todo{font-family:var(--mono);font-size:.74rem;font-weight:500;background:var(--warn-bg);
+  color:var(--warn-ink);border:1px solid var(--warn-rule);padding:2px 7px;white-space:nowrap;
+  text-transform:none;letter-spacing:0}
+
+/* ============================================================
+   IL CAMPO — la prima schermata appartiene al colore, non a un accento
+   ============================================================ */
+:root{ --field:#17382e; --field-ink:#f5f5f2; --field-ink2:#b9c9c1; --field-rule:#2c5347; --field-mark:#e8c46a; }
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){ --field:#101d19; --field-ink:#eceeec; --field-ink2:#9aada5; --field-rule:#22332c; --field-mark:#e0bf6a; }}
+:root[data-theme="dark"]{ --field:#101d19; --field-ink:#eceeec; --field-ink2:#9aada5; --field-rule:#22332c; --field-mark:#e0bf6a; }
+
+.hero{background:var(--field);color:var(--field-ink);padding-block:clamp(52px,8vw,96px) clamp(44px,6vw,80px)}
+.hero .eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--field-mark);margin:0 0 1.4rem;display:block}
+.hero h1{font-size:clamp(2.1rem,6.2vw,4rem);letter-spacing:-.032em;line-height:1.04;margin:0 0 .5em;
+  max-width:19ch;color:var(--field-ink)}
+.hero .lede{color:var(--field-ink2);font-size:clamp(1.08rem,2.2vw,1.3rem);max-width:48ch;margin:0 0 2.6rem}
+.hero .proofs{border:0;border-top:1px solid var(--field-rule);background:none;margin:0 0 2.4rem}
+.hero .proof{border-right:1px solid var(--field-rule);padding:22px 22px 20px 0}
+.hero .proof:first-child{padding-left:0}
+.hero .proof:not(:first-child){padding-left:22px}
+.hero .proof:last-child{border-right:0}
+.hero .pnum{color:var(--field-mark);font-size:clamp(2.2rem,5vw,3.1rem);margin-bottom:10px}
+.hero .proof p{color:var(--field-ink2);font-size:.9rem}
+@media (max-width:559px){
+  .hero .proof{border-right:0;border-bottom:1px solid var(--field-rule);padding:18px 0}
+  .hero .proof:last-child{border-bottom:0}
+  .hero .proof:not(:first-child){padding-left:0}
+}
+.hero .cta{background:var(--field-ink);color:var(--field);border-color:var(--field-ink)}
+.hero .cta:hover{background:transparent;color:var(--field-ink)}
+
+/* un solo momento di movimento, e parte da uno stato già leggibile */
+@media (prefers-reduced-motion:no-preference){
+  .hero h1,.hero .lede,.hero .proofs,.hero .cta{animation:sale .9s cubic-bezier(.16,1,.3,1) backwards}
+  .hero .lede{animation-delay:.06s} .hero .proofs{animation-delay:.12s} .hero .cta{animation-delay:.2s}
+}
+@keyframes sale{from{transform:translateY(13px)}}
+/* nessuno stato invisibile: se l'animazione non parte, la pagina è già leggibile */
+
+/* ============================================================
+   LE SUPERFICI DEL BROWSER — quelle che non si disegnano, e si vedono
+   ============================================================ */
+::selection{background:var(--accent-soft);color:var(--ink)}
+.hero ::selection{background:var(--field-mark);color:var(--field)}
+html{scrollbar-color:var(--rule) transparent;scrollbar-width:thin;caret-color:var(--accent)}
+a{text-underline-offset:.18em;text-decoration-thickness:.07em}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.hero :focus-visible{outline-color:var(--field-mark)}
+table,.price,.pnum,td.num{font-variant-numeric:tabular-nums}
+nav:has(+ .hero){border-bottom-color:transparent}
+@media (max-width:559px){ .proofs{grid-template-columns:1fr} }
+
+
+/* ============================================================
+   13-11-2026 - due pubblici: home larga, apertura su due colonne,
+   le due porte dei servizi affiancate
+   ============================================================ */
+body.home .col{max-width:1060px}
+/* il menu, la barra di stato e il pie' di pagina tengono la stessa larghezza su
+   tutte le pagine, anche dove il testo resta stretto per leggibilita' */
+nav .col,footer .col,.draft .col{max-width:1060px}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,56px);align-items:center}
+.hero .sub{font-size:.9rem;margin:1.1rem 0 0;max-width:42ch;color:var(--field-ink2)}
+.hero .sub a{color:var(--field-mark)}
+/* Lo spazio della foto. Finche' la foto non c'e' e' un pannello pieno, non un
+   riquadro vuoto: si legge come una scelta. Quando arriva l'immagine, l'<img>
+   la riempie tutta e il fondo non si vede piu'. */
+.hero-img{aspect-ratio:4/5;background:#102b23;box-shadow:inset 0 0 0 1px var(--field-rule);
+  overflow:hidden}
+.hero-img img{width:100%;height:100%;object-fit:cover;display:block}
+.hero .lede{margin-bottom:1.9rem}
+
+.band{background:var(--card);padding-block:34px;border-bottom:1px solid var(--rule)}
+.band .proofs{border:0;background:none;margin:0;grid-template-columns:repeat(3,1fr)}
+.band .proof{padding:0 26px 0 0;border-right:1px solid var(--rule);border-bottom:0}
+.band .proof:not(:first-child){padding-left:26px}
+.band .proof:last-child{border-right:0}
+.band .pnum{font-size:clamp(1.9rem,3.4vw,2.6rem);margin-bottom:9px}
+
+h2.sec{font-family:var(--disp);font-weight:700;font-size:clamp(1.3rem,2.4vw,1.75rem);
+  letter-spacing:-.02em;margin:0 0 24px;text-wrap:balance}
+.doors{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.4vw,32px);margin:0 0 62px}
+.door{background:var(--card);border:1px solid var(--rule);border-top:3px solid var(--accent);
+  padding:clamp(20px,2.4vw,30px)}
+.door .lbl{color:var(--accent);font-weight:600;letter-spacing:.14em}
+.door h3{font-family:var(--disp);font-weight:700;font-size:1.35rem;letter-spacing:-.02em;margin:0 0 .5em}
+.door>p{font-size:.93rem;color:var(--ink2);margin:0 0 1.3em;max-width:none}
+.door table{border-collapse:collapse;width:100%;margin:0 0 1.1em;font-size:.92rem}
+.door td{padding:11px 0;border-top:1px solid var(--rule);border-bottom:0;vertical-align:top}
+.door tr:first-child td{border-top:0}
+.door td small{display:block;color:var(--ink2);font-size:.78rem;margin-top:2px}
+.door td.num{text-align:right;font-family:var(--disp);font-weight:700;white-space:nowrap;
+  font-variant-numeric:tabular-nums;padding-left:14px}
+.door .rule{font-size:.86rem;background:var(--accent-soft);padding:11px 14px;margin:0 0 1.2em;
+  border-left:3px solid var(--accent);color:var(--ink);max-width:none}
+.go{font-family:var(--disp);font-weight:600;font-size:.88rem;text-decoration:none}
+
+.sub-h1{font-family:var(--mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink2);margin:-.2em 0 1.6em}
+.nota{font-size:.9rem;background:var(--accent-soft);border-left:3px solid var(--accent);
+  padding:13px 16px;margin:0 0 1.8em}
+main p .cta{margin-top:.6em}
+
+/* 13-11-2026 - ogni servizio per le industrie finisce con la richiesta di preventivo */
+.svc-cta{margin:.9em 0 0}
+.svc-cta .go{display:inline-block;border:1px solid var(--accent);color:var(--accent);
+  padding:9px 16px;font-size:.84rem}
+.svc-cta .go:hover{background:var(--accent);color:var(--on-accent)}
+.piu{font-size:.86rem;color:var(--ink2);margin:0 0 1em;max-width:none}
+
+/* il ritratto di Chi sono: affiancato al testo sul largo, pieno sullo stretto */
+.ritratto{margin:0 0 18px 26px;float:right;width:min(46%,320px)}
+.ritratto img{width:100%;height:auto;display:block;border:1px solid var(--rule)}
+@media (max-width:620px){ .ritratto{float:none;width:100%;margin:0 0 22px} }
+
+@media (max-width:860px){
+  .hero-grid{grid-template-columns:1fr}
+  /* da telefono il titolo viene prima della foto: la prima cosa che si legge
+     dev'essere cosa faccio, non un'immagine */
+  /* da telefono lo spazio e' piu' basso e il ritratto verrebbe tagliato sopra:
+     riquadro quadrato e inquadratura spostata in alto, cosi' la testa resta dentro */
+  .hero-img{aspect-ratio:1/1;margin-top:30px}
+  .hero-img img{object-position:center 18%}
+  /* su schermo stretto il limite di 19 caratteri spezzava il titolo male */
+  .hero h1{max-width:none;text-wrap:pretty}
+  .doors{grid-template-columns:1fr}
+  .band .proofs{grid-template-columns:1fr}
+  .band .proof{padding:16px 0;border-right:0;border-top:1px solid var(--rule)}
+  .band .proof:first-child{border-top:0;padding-top:0}
+  .band .proof:not(:first-child){padding-left:0}
+}
